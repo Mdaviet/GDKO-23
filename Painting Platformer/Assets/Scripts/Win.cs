@@ -9,6 +9,15 @@ public class Win : MonoBehaviour
     public GameObject background;
     public Material colored;
 
+    SpriteRenderer bgRender;
+    GameObject mainCam;
+
+    private void Awake() 
+    {
+        bgRender = background.GetComponent<SpriteRenderer>();
+        mainCam = GameObject.FindWithTag("MainCamera");
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,8 +35,10 @@ public class Win : MonoBehaviour
         if (collider.gameObject.tag == "Finish")
         {
             fullView.SetActive(true);
-            background.GetComponent<SpriteRenderer>().material = colored;
-            GameObject.FindWithTag("MainCamera").SetActive(false);
+            //background.GetComponent<SpriteRenderer>().material = colored;
+            bgRender.material = colored;
+            //GameObject.FindWithTag("MainCamera").SetActive(false);
+            mainCam.SetActive(false);
         }
     }
 }
