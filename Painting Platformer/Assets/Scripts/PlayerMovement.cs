@@ -31,8 +31,11 @@ public class PlayerMovement : MonoBehaviour
 
         onGround = floorCollider.IsTouching(floorFilter);
 
-        if (justJumped == false && Input.GetButton("Jump") && onGround == true)
-            justJumped = true;
+        if (justJumped == false && Input.GetButton("Jump") && onGround == true) justJumped = true;
+
+        if (horizontalMovement < 0) gameObject.GetComponent<SpriteRenderer>().flipX = false;
+        if (horizontalMovement > 0) gameObject.GetComponent<SpriteRenderer>().flipX = true;
+
     }
 
     private void FixedUpdate() 
